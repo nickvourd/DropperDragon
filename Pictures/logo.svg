@@ -1,0 +1,130 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dragonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F7931E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C21807;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shadowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D32F2F;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="500" fill="#1a1a1a"/>
+
+  <!-- Glow background -->
+  <circle cx="250" cy="250" r="200" fill="url(#dragonGrad)" opacity="0.1"/>
+
+  <!-- Dragon Body Group -->
+  <g filter="url(#glow)">
+    <!-- Rear body section (lower back) -->
+    <ellipse cx="200" cy="380" rx="55" ry="65" fill="url(#shadowGrad)"/>
+
+    <!-- Main body -->
+    <ellipse cx="250" cy="320" rx="80" ry="85" fill="url(#dragonGrad)"/>
+
+    <!-- Front body/chest -->
+    <ellipse cx="300" cy="240" rx="65" ry="70" fill="url(#dragonGrad)"/>
+
+    <!-- Neck -->
+    <path d="M 330 200 Q 350 170 360 130" stroke="url(#dragonGrad)" stroke-width="45" fill="none" stroke-linecap="round"/>
+
+    <!-- Dragon Head -->
+    <g>
+      <!-- Main head -->
+      <ellipse cx="375" cy="90" rx="50" ry="55" fill="url(#dragonGrad)"/>
+
+      <!-- Snout/jaw -->
+      <ellipse cx="410" cy="100" rx="35" ry="32" fill="#F7931E"/>
+      <path d="M 415 120 L 430 140 L 420 125 Z" fill="#C21807"/>
+
+      <!-- Upper jaw detail -->
+      <path d="M 380 65 Q 400 50 420 60" stroke="#C21807" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+      <!-- Dragon Horns -->
+      <!-- Left horn -->
+      <path d="M 360 50 Q 345 20 340 -10" stroke="url(#dragonGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <path d="M 360 50 Q 345 20 340 -10" stroke="#8B0000" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+      <!-- Right horn -->
+      <path d="M 390 50 Q 410 15 415 -15" stroke="url(#dragonGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <path d="M 390 50 Q 410 15 415 -15" stroke="#8B0000" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+      <!-- Eyes -->
+      <circle cx="360" cy="75" r="10" fill="#FFD700"/>
+      <circle cx="360" cy="75" r="6" fill="#000"/>
+      <circle cx="362" cy="73" r="2" fill="#fff"/>
+
+      <circle cx="390" cy="75" r="10" fill="#FFD700"/>
+      <circle cx="390" cy="75" r="6" fill="#000"/>
+      <circle cx="392" cy="73" r="2" fill="#fff"/>
+
+      <!-- Nostril -->
+      <circle cx="425" cy="95" r="4" fill="#000"/>
+      <circle cx="435" cy="105" r="4" fill="#000"/>
+
+      <!-- Head ridges (spikes) -->
+      <path d="M 370 45 L 375 25 M 380 40 L 385 15 M 390 40 L 395 18" stroke="#C21807" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Front left claw -->
+    <g>
+      <ellipse cx="280" cy="290" rx="25" ry="35" fill="url(#shadowGrad)"/>
+      <path d="M 275 320 L 270 360 M 285 325 L 290 360 M 290 325 L 300 365" stroke="#8B0000" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Front right claw -->
+    <g>
+      <ellipse cx="340" cy="290" rx="25" ry="35" fill="url(#shadowGrad)"/>
+      <path d="M 335 320 L 330 360 M 345 325 L 350 360 M 350 325 L 360 365" stroke="#8B0000" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Back left claw -->
+    <g>
+      <ellipse cx="165" cy="420" rx="22" ry="30" fill="url(#shadowGrad)"/>
+      <path d="M 160 450 L 155 480 M 170 455 L 175 485" stroke="#8B0000" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Back right claw -->
+    <g>
+      <ellipse cx="235" cy="430" rx="22" ry="30" fill="url(#shadowGrad)"/>
+      <path d="M 230 460 L 225 490 M 240 465 L 245 490" stroke="#8B0000" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Wings -->
+    <!-- Left wing -->
+    <path d="M 250 300 Q 150 250 120 150 Q 140 200 180 280 Z" fill="url(#dragonGrad)" opacity="0.8"/>
+    <path d="M 250 300 Q 150 250 120 150" stroke="#C21807" stroke-width="3" fill="none" opacity="0.6"/>
+
+    <!-- Right wing -->
+    <path d="M 280 300 Q 380 250 410 150 Q 390 200 350 280 Z" fill="url(#dragonGrad)" opacity="0.8"/>
+    <path d="M 280 300 Q 380 250 410 150" stroke="#C21807" stroke-width="3" fill="none" opacity="0.6"/>
+
+    <!-- Tail -->
+    <path d="M 160 390 Q 80 400 40 450 Q 60 460 110 450" stroke="url(#dragonGrad)" stroke-width="50" fill="none" stroke-linecap="round"/>
+    <path d="M 160 390 Q 80 400 40 450" stroke="#C21807" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Tail spikes -->
+    <path d="M 100 430 L 90 460 M 70 445 L 50 475 M 50 450 L 30 485" stroke="#C21807" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Body spikes/ridges -->
+    <path d="M 240 250 L 235 220 M 260 250 L 265 220 M 280 280 L 290 250 M 220 320 L 210 290" stroke="#C21807" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Fire/smoke effect -->
+    <circle cx="435" cy="110" r="15" fill="#FF6B35" opacity="0.6"/>
+    <circle cx="440" cy="100" r="12" fill="#F7931E" opacity="0.7"/>
+    <circle cx="445" cy="115" r="10" fill="#FFD700" opacity="0.5"/>
+  </g>
+
+  <!-- Border glow -->
+  <circle cx="250" cy="250" r="245" fill="none" stroke="url(#dragonGrad)" stroke-width="2" opacity="0.8"/>
+</svg>

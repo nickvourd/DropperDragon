@@ -1,0 +1,64 @@
+---
+- hosts: web_servers
+  become: true
+  vars:
+    domain: "{{ fqdn }}"
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: true
+      changed_when: false
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    - name: Autoremove unnecessary packages
+      apt:
+        autoremove: true
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Enable nginx service
+      systemd:
+        name: nginx
+        enabled: true
+
+    - name: Install snapd
+      apt:
+        name: snapd
+        state: present
+
+    - name: Install certbot via snap
+      snap:
+        name: certbot
+        classic: true
+
+    - name: Create certbot certificate
+      shell: certbot certonly -d {{ domain }} --nginx --non-interactive --register-unsafely-without-email --agree-tos
+      args:
+        creates: /etc/letsencrypt/live/{{ domain }}/fullchain.pem
+
+    - name: Deploy nginx configuration from template
+      template:
+        src: nginx_default.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+      notify: restart nginx
+
+    - name: Install magic-wormhole
+      apt:
+        name: magic-wormhole
+        state: present
+
+  handlers:
+    - name: restart nginx
+      systemd:
+        name: nginx
+        state: restarted
