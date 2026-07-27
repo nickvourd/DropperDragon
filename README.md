@@ -1,6 +1,6 @@
 # DropperDragon 
 
-Dropper WebServer Solution 
+Automated Dropper WebServer Solution.
 
 <p align="center">
   <!--<img width="400" height="400" src="/Pictures/logo.svg"><br /><br />
