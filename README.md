@@ -43,9 +43,7 @@ The authors and contributors of this project are not liable for any misuse of th
   - [Features](#features)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Workflow](#workflow)
   - [Directory Structure](#directory-structure)
-  - [Troubleshooting](#troubleshooting)
 
 ## Features
 
@@ -159,39 +157,6 @@ https://<fqdn_from_setup_output>
 
 The FQDN will be displayed in the `setup.py` output.
 
-## Workflow
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  1. setup.py - Create Azure Infrastructure              │
-│     ├─ Validates Azure CLI authentication               │
-│     ├─ Creates terraform.tfvars with parameters         │
-│     ├─ Provisions Azure VM and network resources        │
-│     └─ Outputs: public_ip, fqdn, username               │
-└─────────────────────────────────────────────────────────┘
-                          ⬇
-┌─────────────────────────────────────────────────────────┐
-│  2. deploy.py - Configure VM with Ansible               │
-│     ├─ Retrieves Terraform outputs                      │
-│     ├─ Creates dynamic Ansible inventory                │
-│     ├─ Tests SSH connectivity                           │
-│     └─ Executes site.yml playbook                       │
-└─────────────────────────────────────────────────────────┘
-                          ⬇
-┌─────────────────────────────────────────────────────────┐
-│  3. site.yml - Ansible Playbook Tasks                   │
-│     ├─ System updates (apt update, upgrade, etc)        │
-│     ├─ Install nginx web server                         │
-│     ├─ Install certbot for SSL management               │
-│     ├─ Generate Let's Encrypt certificates              │
-│     ├─ Deploy nginx configuration (HTTP→HTTPS)          │
-│     ├─ Enable and restart services                      │
-│     └─ Install additional utilities                     │
-└─────────────────────────────────────────────────────────┘
-                          ⬇
-            ✅ Production-Ready Server
-```
-
 ## Directory Structure
 
 ```
@@ -219,57 +184,6 @@ DropperDragon/
         └── plans/            # Implementation plans
 ```
 
-## Playbook Tasks
-
-The `site.yml` Ansible playbook performs the following tasks:
-
-1. **System Updates**
-   - Update apt package cache
-   - Upgrade all installed packages (dist-upgrade)
-   - Remove unnecessary packages (autoremove)
-
-2. **Web Server Setup**
-   - Install nginx
-   - Enable nginx systemd service
-
-3. **SSL Certificate Management**
-   - Install snapd package manager
-   - Install certbot via snap (classic mode)
-   - Generate Let's Encrypt certificates for FQDN
-   - Deploy nginx SSL configuration
-
-4. **Utilities**
-   - Install magic-wormhole for file transfer
-
-5. **Service Management**
-   - Restart nginx to apply configuration changes
-
-## Troubleshooting
-
-### SSH Connection Failed
-- Verify the SSH key path is correct
-- Ensure the private key has correct permissions: `chmod 600 ~/.ssh/id_rsa`
-- Check that the VM is fully initialized (wait 2-3 minutes after Terraform completes)
-
-### Ansible Playbook Fails
-- Verify SSH connectivity manually: `ssh -i <key> <user>@<ip>`
-- Check that Ansible is installed: `ansible --version`
-- Review the inventory file in `Ansible-Pack/inventory.ini`
-
-### Certbot Certificate Generation Fails
-- Ensure FQDN is properly registered in DNS
-- Check certbot logs: `sudo certbot certificates`
-- Verify nginx is running: `sudo systemctl status nginx`
-
-### Terraform Apply Fails
-- Verify Azure CLI authentication: `az account show`
-- Check Terraform files in `Terraform-Pack/`
-- Ensure resource group name is unique in your subscription
-
-## Support
-
-For issues, questions, or contributions, please open an issue on GitHub.
-
 ---
 
-**Created with ❤️ by the DropperDragon Contributors**
+**Created with ❤️ by [@nickvourd](https://x.com/nickvourd)**
