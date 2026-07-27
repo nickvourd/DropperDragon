@@ -31,6 +31,8 @@ The following list explains the meaning of each pack:
 
 > If you find any bugs, don't hesitate to [report them](https://github.com/nickvourd/DropperDragon/issues). Your feedback is valuable in improving the quality of this project!
 
+**Created with ❤️ by [@nickvourd](https://x.com/nickvourd)**
+
 ## Disclaimer
 
 The authors and contributors of this project are not liable for any misuse of the tool. It is intended for educational and authorized infrastructure deployment purposes only. Users are responsible for ensuring lawful and authorized usage.
@@ -184,6 +186,3 @@ DropperDragon/
         └── plans/            # Implementation plans
 ```
 
----
-
-**Created with ❤️ by [@nickvourd](https://x.com/nickvourd)**
