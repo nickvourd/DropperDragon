@@ -63,13 +63,13 @@ Install the following dependencies on your local machine.
 ### For Linux (Ubuntu/Debian):
 
 ```bash
-sudo apt install terraform npm ansible azure-cli python3 -y
+sudo apt install terraform ansible azure-cli python3 -y
 ```
 
 ### For Mac:
 
 ```bash
-brew install terraform azure-cli node ansible python3
+brew install terraform azure-cli ansible python3
 ```
 
 ### Verify Installations:
