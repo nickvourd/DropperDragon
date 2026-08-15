@@ -104,24 +104,12 @@ cd DropperDragon
 #### 2. Deploy Azure VM (Team Server)
 
 ```bash
-python3 scripts-pack/setup.py \
-  -l <azure_location> \
-  -u <vm_username> \
-  -n <resource_prefix> \
-  -s <path_to_ssh_key> \
-  -d <dns_prefix> \
-  -v <vm_size>
+python3 scripts-pack/setup.py -l <azure_location> -u <vm_username> -n <resource_prefix> -s <ssh_key_name> -d <dns_prefix> -v <vm_size>
 ```
 
 **Example:**
 ```bash
-python3 scripts-pack/setup.py \
-  -l westus2 \
-  -u azureuser \
-  -n myapp \
-  -s ~/.ssh/id_rsa \
-  -d myapp-dns \
-  -v standard_b2s
+python3 scripts-pack/setup.py -l westus2 -u nickvourd -n myapp -s webserver -d myapp-dns -v standard_b2s
 ```
 
 **Available Azure Locations:**
@@ -146,7 +134,7 @@ python3 scripts-pack/deploy.py --ssh-key <path_to_ssh_key>
 
 **Example:**
 ```bash
-python3 scripts-pack/deploy.py --ssh-key ~/.ssh/id_rsa
+python3 scripts-pack/deploy.py --ssh-key Terraform/webserver.pem
 ```
 
 #### 4. Access Your Service
